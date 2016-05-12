@@ -1,5 +1,39 @@
-tips:
+tips(security):
 1. no eval
 2. Reflected Cross Site Scripting
 3. fake Cookie
-4. Cross-Site Request Forgery
+4. Cross-Site Request Forgery 
+
+==============================================
+Schema of DatabaseTable customer
+————————Customerid varchar(255)//maybe change it to name or give it another attribute id
+passward
+—————
+PKEY Customerid
+
+Table cart//it is too expensive to build a table for each customer,use one table 
+———————
+customerid 
+itemid
+date
+—————
+PKEY {Customerid,itemid,date} //?
+
+Table item
+—————
+itemid 
+describ
+imageurl//do we need?
+—————
+PKEY itemid
+
+Table purchasehistory//challenge part
+———————————————
+customerid
+itemid
+date
+—————
+PKEY {Customerid,itemid,date}
+
+
+
