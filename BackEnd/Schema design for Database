@@ -10,7 +10,8 @@ customerid
 itemid
 date
 —————
-PKEY {Customerid,itemid,date} //?
+PKEY {Customerid,itemid,date} 
+foreign key customerid,itemid//?
 
 Table item
 —————
@@ -27,6 +28,7 @@ itemid
 date
 —————
 PKEY {Customerid,itemid,date}
+foreign key customerid,itemid
 
 
 
