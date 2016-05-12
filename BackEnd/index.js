@@ -41,6 +41,7 @@ app.get('/', function (req, res) {
 });
 
 //not sure we need it
+//
 // //get data from database
 // app.get('/initialize', function (req, res) {
 //     //error handling
@@ -59,20 +60,20 @@ app.get('/login', function (req, res) {
     });
 
     //get value of variable
-    var customer = req.body.customer;
+    var customerid = req.body.customerid;//customer id is name of customer 
     var passward = req.body.password;
 
     //===================================================
     // web should already check this, just leave these, will delete later
     //error handling
-    if(customer==null){
-        console.log("Error: fail to login - miss customer");
-        res.status(401).send({message:"Error:miss customer"});
+    if(customerid==null){
+        console.log("Error: fail to login - miss customerid");
+        res.status(401).send({message:"Error:miss customerid"});
         return;
     }
     if(passward==null){
         console.log("Error: fail to login - miss passward");
-        res.status(401).send({message:"Error:miss customer"});
+        res.status(401).send({message:"Error:miss passward"});
         return;
     }
     //====================================================
