@@ -1,0 +1,5 @@
+tips:
+1. no eval
+2. Reflected Cross Site Scripting
+3. fake Cookie
+4. Cross-Site Request Forgery
