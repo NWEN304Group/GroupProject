@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91341ab0-c115-4b63-a002-c94b22469a85" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FrontEnd/GhostWeb/img/ghostboards-whitecolumn.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BackEnd/index.js" afterPath="$PROJECT_DIR$/BackEnd/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BackEnd/Schema design for Database" afterPath="$PROJECT_DIR$/BackEnd/Schema design for Database" />
     </list>
     <ignored path="GroupProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,21 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ghostboards.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ghostboards.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FrontEnd/GhostWeb/ghostboards.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+            <state relative-caret-position="0">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Schema design for Database" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Schema design for Database" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BackEnd/Schema design for Database">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="765">
+              <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -87,6 +85,7 @@
         <option value="$PROJECT_DIR$/FrontEnd/GhostWeb/ghostboards.html" />
         <option value="$PROJECT_DIR$/FrontEnd/GhostWeb/styles/ghostboards.css" />
         <option value="$PROJECT_DIR$/BackEnd/index.js" />
+        <option value="$PROJECT_DIR$/BackEnd/Schema design for Database" />
       </list>
     </option>
   </component>
@@ -328,15 +327,15 @@
       <workItem from="1463096166080" duration="12896000" />
       <workItem from="1463137071397" duration="1653000" />
       <workItem from="1463145618222" duration="5631000" />
-      <workItem from="1463184121471" duration="867000" />
+      <workItem from="1463184121471" duration="2237000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25820000" />
+    <option name="totallyTimeSpent" value="27190000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="156" y="23" width="1108" height="736" extended-state="1" />
+    <frame x="156" y="23" width="1108" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27598897" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -578,18 +577,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Schema design for Database">
+    <entry file="file://$PROJECT_DIR$/FrontEnd/GhostWeb/ghostboards.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FrontEnd/GhostWeb/ghostboards.html">
+    <entry file="file://$PROJECT_DIR$/BackEnd/Schema design for Database">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+        <state relative-caret-position="765">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
           <folding />
         </state>
       </provider>

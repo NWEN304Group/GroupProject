@@ -1,5 +1,8 @@
-Schema of DatabaseTable customer
-————————Customerid varchar(255)//maybe change it to name or give it another attribute id
+Schema of Database
+
+Table customer
+————————
+Customerid varchar(255)//maybe change it to name or give it another attribute id
 passward
 —————
 PKEY Customerid
@@ -21,14 +24,33 @@ imageurl//do we need?
 —————
 PKEY itemid
 
-Table purchasehistory//challenge part
+//===4 tables for purchase and cart function===============================================
+//this table stores the item that login customer put into cart and pay for it
+Table purchasehistory
 ———————————————
 customerid
 itemid
 date
+amount
 —————
 PKEY {Customerid,itemid,date}
 foreign key customerid,itemid
 
+//this table stores the item that login customer put into cart but did not pay for it(still in cart)
+//not included purchased history
+Table cartLogin
+———————————————
 
-
+
+//this table stores the item that login customer put into cart but did not pay for it and deleted it(not in cart now)
+Table cartdeletedlogin
+———————————————
+
+
+//this table stores the item that not login customer put into cart but did not pay for it
+//this table will be cleaned at fixed period
+Table cartnotlogin
+———————————————
+
+
+
