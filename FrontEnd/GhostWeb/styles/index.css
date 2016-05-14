@@ -1,7 +1,8 @@
 body{
-	padding-top: 70px;
+	padding-top: 50px;
 }
 
+/*center the contents*/
 .navbar .navbar-nav {
   display: inline-block;
   float: none;
@@ -10,6 +11,10 @@ body{
 
 .navbar .navbar-collapse {
   text-align: center;
+}
+
+.navbar-header{
+  display: inline-block;
 }
 
 .navbar-inverse {
@@ -34,3 +39,28 @@ body{
   width: 100%;
   height: auto;
 }
+
+.dropdown-menu>li>a {
+  text-align: center;
+}
+
+hr{
+  margin: 5px;
+}
+
+.slide-image {
+    min-width: 100%;
+}
+/*.carousel-holder{
+  margin-top: 0px;
+}*/
+/*.dropdown-menu-left {
+    position:absolute;
+    right:0px;
+}*/
+
+/*pull toggle button to left*/
+/*.navbar-toggle{
+  float: left;
+  margin-left: 10px;
+}*/
