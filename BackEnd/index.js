@@ -60,7 +60,7 @@ app.get('/login', function (req, res) {
     });
 
     //get value of variable
-    var customerid = req.body.customerid;//customer id is name of customer 
+    var customerid = req.body.customerid;//customer id is name of customer
     var passward = req.body.password;
 
     //===================================================
