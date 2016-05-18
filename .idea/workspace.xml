@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91341ab0-c115-4b63-a002-c94b22469a85" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BackEnd/Schema design for Database" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FrontEnd/bootstrap-3.3.6-dist/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/FrontEnd/bootstrap-3.3.6-dist/css/bootstrap.min.css" />
-    </list>
+    <list default="true" id="91341ab0-c115-4b63-a002-c94b22469a85" name="Default" comment="" />
     <ignored path="GroupProject.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -202,10 +198,6 @@
               <option name="myItemId" value="GroupProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackEnd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -335,15 +327,15 @@
       <workItem from="1463145618222" duration="5631000" />
       <workItem from="1463184121471" duration="3021000" />
       <workItem from="1463296678841" duration="351000" />
-      <workItem from="1463367843679" duration="126000" />
+      <workItem from="1463367843679" duration="599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28451000" />
+    <option name="totallyTimeSpent" value="28924000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="380" y="25" width="1108" height="736" extended-state="1" />
+    <frame x="380" y="25" width="1108" height="736" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27598897" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
