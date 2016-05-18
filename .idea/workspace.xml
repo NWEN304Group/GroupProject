@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91341ab0-c115-4b63-a002-c94b22469a85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BackEnd/ServiceDatabaseLogic.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="91341ab0-c115-4b63-a002-c94b22469a85" name="Default" comment="" />
     <ignored path="GroupProject.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -313,12 +310,12 @@
       <workItem from="1463296678841" duration="351000" />
       <workItem from="1463367843679" duration="599000" />
       <workItem from="1463570541098" duration="1207000" />
-      <workItem from="1463580183568" duration="355000" />
+      <workItem from="1463580183568" duration="448000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30486000" />
+    <option name="totallyTimeSpent" value="30579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="736" extended-state="0" />
