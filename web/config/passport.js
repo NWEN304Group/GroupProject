@@ -15,11 +15,12 @@ passport.deserializeUser(function(id, done) {
 
 
 //Middleware
+// name local-login
 passport.use('local-login', new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
-}, function(req, email, password, done) {
+}, function(req, email, password, done) {// validate input
   User.findOne({ email: email}, function(err, user) {
     if (err) return done(err);
 
@@ -28,7 +29,7 @@ passport.use('local-login', new LocalStrategy({
     }
 
     if (!user.varifyPassword(password)) {
-      return done(null, false, req.flash('loginMessage', 'Oops! Wrong Password pal'));
+      return done(null, false, req.flash('loginMessage', 'Wrong Password'));
     }
     return done(null, user);
   });

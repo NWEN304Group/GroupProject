@@ -31,6 +31,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(cookieParser());
+
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -39,8 +40,9 @@ app.use(session({
 }));
 
 app.use(flash());
-
+// initialize passport
 app.use(passport.initialize());
+// serialize and deserialize
 app.use(passport.session());
 app.use(function(req, res, next) {
   res.locals.user = req.user;
