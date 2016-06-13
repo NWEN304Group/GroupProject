@@ -1,0 +1,25 @@
+<% layout('layout') -%>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+
+
+      <br />
+      <p>Name: <%= user.profile.name %></p>
+      <p>Email: <%= user.email %></p>
+
+      <% if (user.address === "" || typeof user.address === 'undefined')  { %>
+        <p>Address: <span style="color: #c0392b; font-weight: bold">You have no address</span></p>
+
+      <% } else { %>
+
+      <p>Address: <%= user.address %></p>
+
+      <% } %>
+
+      <a href="/edit-profile" class="btn btn-primary btn-lg">Edit Profile</a>
+    </div>
+  </div>
+</div>

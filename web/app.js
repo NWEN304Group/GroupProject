@@ -7,48 +7,57 @@ var ejsMate = require('ejs-mate');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var flash = require('express-flash');
+var MongoStore = require('connect-mongo/es5')(session);
+var passport = require('passport');
 
-
+var secret = require('./config/secret');
 var User = require('./models/user');
 
 var app = express();
-var databaseUrl = 'mongodb://root:qw12er34@ds019053.mlab.com:19053/nwen304test';
-mongoose.connect(databaseUrl, function(error){
+
+mongoose.connect(secret.database, function(error){
 	if(error){
 		console.log(error);
 	}else{
-		console.log('connected to mongodb');
+		console.log('mongodb connected');
 	}
 });
 
 // Add middleware
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.use(cookieParser);
+app.use(cookieParser());
 app.use(session({
-	resave:true,
-	saveUninitialialized:true,
-	secret:"qw12er34"
+  resave: true,
+  saveUninitialized: true,
+  secret: secret.secretKey,
+  store: new MongoStore({ url: secret.database, autoReconnect: true})
 }));
+
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 
-// Routes
+// Add Routes
 var mainRoute = require('./routes/main');
 var userRoute = require('./routes/user');
 
 app.use(mainRoute);
 app.use(userRoute);
 
-
-
-
-app.listen(8080, function(error){
+app.listen(secret.port, function(error){
 	if (error) throw error;
-	console.log("Server is listenning on port 8080");
+	console.log("Server is listenning on port " + secret.port);
 });
