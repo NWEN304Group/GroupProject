@@ -53,12 +53,15 @@ app.use(function (req, res, next) {
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 
-// Add Routes
+// Add Routes------------
 var mainRoute = require('./routes/main');
 var userRoute = require('./routes/user');
+var operateDBRoute = require('./routes/operateDB');
 
 app.use(mainRoute);
 app.use(userRoute);
+app.use(operateDBRoute);
+//-----------------------
 
 app.listen(secret.port, function (error) {
     if (error) throw error;
