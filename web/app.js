@@ -13,6 +13,7 @@ var passport = require('passport');
 var secret = require('./config/secret');
 var User = require('./models/user');
 var categorySchema = require('./product/category');
+var productSchema = require('./product/product');
 
 var app = express();
 
@@ -47,7 +48,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(function (req, res, next) {
     res.locals.user = req.user;
-    next();
+    productSchema.find({}, function (err, products) {
+        if (err) {
+            return next(err)
+        }
+        ;
+        res.locals.allProducts = products;
+        next();
+    })
 });
 
 //select all categories
