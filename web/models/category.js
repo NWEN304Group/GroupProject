@@ -1,5 +1,6 @@
 /**
  * Created by Zhen Wang on 16/6/15.
+ * category schema
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
