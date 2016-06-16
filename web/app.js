@@ -12,7 +12,7 @@ var passport = require('passport');
 
 var secret = require('./config/secret');
 var User = require('./models/user');
-var Category = require('./models/category');
+var Category = require('./product/category');
 
 var app = express();
 

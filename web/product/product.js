@@ -2,7 +2,6 @@
  * Created by Zhen Wang on 16/6/15.
  */
 var mongoose = require('mongoose');
-var mongoosastic = require('mongoosastic');
 var Schema = mongoose.Schema;
 
 var ProductSchema = new Schema({
@@ -10,12 +9,6 @@ var ProductSchema = new Schema({
     name: String,
     price: Number,
     image: String
-});
-
-ProductSchema.plugin(mongoosastic, {
-    hosts: [
-        'localhost:9200'
-    ]
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

@@ -6,7 +6,7 @@
  */
 
 var router = require('express').Router();
-var Category = require('../models/category');
+var Category = require('../product/category');
 
 //return add category page
 router.get('/addCategory', function(req, res, next) {

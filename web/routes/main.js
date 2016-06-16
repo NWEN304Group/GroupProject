@@ -1,4 +1,5 @@
 var router = require('express').Router();
+var product = require('../product/product')
 
 router.get('/', function (req, res) {
     res.render('main/index');
@@ -6,15 +7,16 @@ router.get('/', function (req, res) {
 
 //get products from id of category
 router.get('/products/:id', function (req, res, next) {
-    console.log(req);
+    console.log("find=======")
     //search in mongodb
-    Product
+    product
         .find({category: req.params.id})
         .populate('category')
         .exec(function (err, products) {
             if (err) return next(err);
-            res.render('main/productsOfCategory', {
-                products: products
+            console.log(products);
+            res.render('product/productsOfCategory', {
+                productsFound: products
             });
         });
 });
