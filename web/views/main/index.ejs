@@ -1,18 +1,18 @@
-<% layout('layout') -%>
+<% layout('layout') - %>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron" id="navbar-gap">
-  <div class="container">
-    <h1> NWEN304 SHOP</h1>
-    <p>Guess you will like</p>
-    <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Signup &raquo;</a></p>
-  </div>
+    <div class="container">
+        <h1> NWEN304 SHOP</h1>
+        <p>Guess you will like</p>
+        <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Signup &raquo;</a></p>
+    </div>
 </div>
 
 <div class="container">
     <div class="row">
         <% for (var i = 0; i < allProducts.length; i++) { %>
-        <div class="col-md-4">
+        <div class="col-sm-4">
             <a href="/product/<%= allProducts[i]._id %>">
                 <div class="thumbnail">
                     <img src="<%= allProducts[i].image %>">
