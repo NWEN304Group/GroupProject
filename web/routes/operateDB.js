@@ -8,13 +8,15 @@
 var router = require('express').Router();
 var Category = require('../models/category');
 
+//return add category page
 router.get('/addCategory', function(req, res, next) {
     res.render('operateDB/addCategoryPage', { message: req.flash('success') });
 });
 
+//add to database
 router.post('/addCategory', function(req, res, next) {
     var category = new Category();
-    category.name = req.body.name;
+    category.name = req.body.nameInput;
 
     category.save(function(err) {
         if (err) return next(err);

@@ -19,3 +19,7 @@ ProductSchema.plugin(mongoosastic, {
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
+
+// for adding product in database
+// 57623034ec93478e42015cfb id of food
+// 57623034ec93478e42015cfc id of shoes

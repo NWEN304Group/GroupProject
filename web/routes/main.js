@@ -4,7 +4,7 @@ router.get('/', function (req, res) {
     res.render('main/index');
 });
 
-//get product from id of category
+//get products from id of category
 router.get('/products/:id', function (req, res, next) {
     console.log(req);
     //search in mongodb
