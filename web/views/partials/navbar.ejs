@@ -1,35 +1,46 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-      </button>
-      <a class="navbar-brand" href="/">NWEN304 Shop</a>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="/">NWEN304 Shop</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <% /*add menu to navbar for showing categories*/ %>
+            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories</a>
+                <ul class="dropdown-menu">
+                    <% for (var i = 0; i < allCategories.length; i++)  { %>
+                    <% /*request GET '/products/:id' in main.js*/ %>
+                    <li><a href="/products/<%= allCategories[i]._id %>"><%= allCategories[i].name %></a></li>
+                    <% } %>
+                </ul>
+            </li>
+
+            <% if (!user) { %>
+
+            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Signup / Login</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/signup">Signup</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </li>
+
+            <% } else { %>
+
+            <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
+            <% } %>
+
+        </ul>
+
+
     </div>
-
-    <ul class="nav navbar-nav navbar-right">
-      <% if (!user) { %>
-
-      <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Signup / Login</a>
-        <ul class="dropdown-menu">
-          <li><a href="/signup">Signup</a></li>
-          <li><a href="/login">Login</a></li>
-        </ul>
-      </li>
-
-     <% } else { %>
-
-      <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= user.profile.name %></a>
-        <ul class="dropdown-menu">
-          <li><a href="/profile">Profile</a></li>
-          <li><a href="/logout">Logout</a></li>
-        </ul>
-      </li>
-      <% } %>
-
-    </ul>
-
-
-
-  </div>
 </nav>

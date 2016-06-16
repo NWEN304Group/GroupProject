@@ -7,14 +7,12 @@ router.get('/', function (req, res) {
 
 //get products from id of category
 router.get('/products/:id', function (req, res, next) {
-    console.log("find=======")
     //search in mongodb
     product
         .find({category: req.params.id})
         .populate('category')
         .exec(function (err, products) {
             if (err) return next(err);
-            console.log(products);
             res.render('product/productsOfCategory', {
                 productsFound: products
             });

@@ -12,7 +12,7 @@ var passport = require('passport');
 
 var secret = require('./config/secret');
 var User = require('./models/user');
-var Category = require('./product/category');
+var categorySchema = require('./product/category');
 
 var app = express();
 
@@ -48,6 +48,18 @@ app.use(passport.session());
 app.use(function (req, res, next) {
     res.locals.user = req.user;
     next();
+});
+
+//select all categories
+app.use(function (req, res, next) {
+    categorySchema.find({}, function (err, categories) {
+        if (err) {
+            return next(err)
+        }
+        ;
+        res.locals.allCategories = categories;
+        next();
+    })
 });
 
 app.engine('ejs', ejsMate);
