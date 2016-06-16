@@ -1,11 +1,10 @@
 <% layout('layout') -%>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
+
 <div class="jumbotron" id="navbar-gap">
     <div class="container">
         <h1> NWEN304 SHOP</h1>
         <p>Guess you will like</p>
-        <p><a class="btn btn-primary btn-lg" href="/signup" role="button">Signup &raquo;</a></p>
     </div>
 </div>
 
@@ -13,7 +12,7 @@
 
     <div class="row">
 
-        <% for (var i = 0; i < products.length; i++) { %>
+    <% for (var i = 0; i < products.length; i++) { %>
         <div class="col-md-4">
             <a href="/product/<%= products[i]._id %>">
                 <div class="thumbnail">
@@ -35,7 +34,7 @@
                 <% if (i === 1)  { %>
             <li><a href="/"><%= i %></a></li>
             <% } else { %>
-            <li><a href="/pagenotlogin/<%= i %>"><%= i %></a></li>
+            <li><a href="/page/<%= i %>"><%= i %></a></li>
             <% } %>
 
             <% } %>
