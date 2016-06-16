@@ -26,20 +26,18 @@
             </a>
         </div>
         <% } %>
-
-        <% /*footer*/ %>
-        <ul class="pagination text-center">
-            <li>
-                <% for(var i = 1; i <= numOfPage ; i++) { %>
-                <% if (i === 1)  { %>
-            <li><a href="/"><%= i %></a></li>
-            <% } else { %>
-            <li><a href="/page/<%= i %>"><%= i %></a></li>
-            <% } %>
-
-            <% } %>
-            </li>
-        </ul>
-
     </div>
+    <% /*footer*/ %>
+    <ul class="pagination text-center">
+        <li>
+            <% for(var i = 1; i <= numOfPage ; i++) { %>
+            <% if (i === 1)  { %>
+        <li><a href="/"><%= i %></a></li>
+        <% } else { %>
+        <li><a href="/page/<%= i %>"><%= i %></a></li>
+        <% } %>
+
+        <% } %>
+        </li>
+    </ul>
 </div>
