@@ -24,6 +24,7 @@ router.get('/profile', function(req, res, next) {
 });
 
 router.get('/signup', function(req, res, next){
+  if (req.user) return res.redirect('/');
 	res.render('users/signup', {
 		errors: req.flash('errors')
 	});
@@ -35,7 +36,6 @@ router.post('/signup', function(req, res, next) {
   user.profile.name = req.body.name;
   user.email = req.body.email;
   user.password = req.body.password;
-  user.profile.picture = user.gravatar();
 
   User.findOne({ email: req.body.email }, function(err, existingUser) {
 
