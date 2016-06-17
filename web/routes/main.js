@@ -203,14 +203,14 @@ router.post('/removeone', function (req, res, next) {
         for (var i = 0; i < cartFound.items.length; i++) {
             if (cartFound.items[i]._id == req.body.item) {
                 console.log(cartFound.items[i].quantity);
-                if (cartFound.items[i].quantity==1) {
+                if (cartFound.items[i].quantity == 1) {
                     cartFound.items.pull(String(req.body.item));
                     cartFound.total = cartFound.total - parseFloat(req.body.price);
                 }
                 else {
                     var quantityValue = parseInt(cartFound.items[i].quantity);
                     var priceValue = parseFloat(cartFound.items[i].price);
-                    var unitPrice = priceValue/quantityValue;
+                    var unitPrice = priceValue / quantityValue;
                     console.log(unitPrice + "unitPrice");
                     var newquantity = quantityValue - 1;
                     var newprice = priceValue - unitPrice;
@@ -234,6 +234,41 @@ router.post('/removeone', function (req, res, next) {
             res.redirect('/cart');
         });
     });
+});
+
+//=============================payment==============================
+router.post('/payment', function (req, res, next) {
+    async.waterfall([
+        function (callback) {
+            Cart.findOne({owner: req.user._id}, function (err, cart) {
+                callback(err, cart);
+            });
+        },
+        function (cart, callback) {
+            User.findOne({_id: req.user._id}, function (err, user) {
+                if (user) {
+                    for (var i = 0; i < cart.items.length; i++) {
+                        user.history.push({
+                            item: cart.items[i].item,
+                            paid: cart.items[i].price
+                        });
+                    }
+
+                    user.save(function (err, user) {
+                        if (err) return next(err);
+                        callback(err, user);
+                    });
+                }
+            });
+        },
+        function (user) {
+            Cart.update({owner: user._id}, {$set: {items: [], total: 0}}, function (err, updated) {
+                if (updated) {
+                    res.redirect('/profile');
+                }
+            });
+        }
+    ]);
 });
 
 //==================================================================

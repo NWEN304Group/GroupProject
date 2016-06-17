@@ -47,7 +47,41 @@
             </div>
 
             <% } %>
-
         </div>
+
+
+        <div class="col-md-3"></div>
+
+
+        <div class="col-md-3">
+            <div class="list-group">
+                <span class="list-group-item">
+                    <h4>Total: $<span class="totalPrice"><%= cartFound.total %></span></h4>
+                    <div class="form-group">
+                        <input type="hidden" value="<%= cartFound.total %>">
+                        <button type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#payModal">  Pay  </button>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Total: $<span class="totalPrice">Total Price: <%= cartFound.total %></span></h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+                        <button type="button" class="btn btn-primary" id="confirm-payment">Confirm Payment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

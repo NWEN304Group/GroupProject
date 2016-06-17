@@ -40,4 +40,7 @@ $(function() {
         $('#total_number_productpage').html(quantity);
     });
 
+    $(document).on("click", "#confirm-payment", function(event){
+        redirect("/");
+    });
 });
