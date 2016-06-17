@@ -55,7 +55,7 @@ router.post('/signup', function (req, res, next) {
             });
         },
         function (user) {
-            var cart = new cartDB();
+            var cart = new cart();
             cart.owner = user._id;
             cart.save(function (err) {
                 if (err) return next(err);
