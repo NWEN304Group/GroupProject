@@ -137,7 +137,7 @@ router.post('/product/:product_id', function (req, res, next) {
                 //
                 //     }
                 // );
-                cart.items.pull({_id:cart.items[i]._id});
+                cart.items.pull({_id: cart.items[i]._id});
                 cart.items.push({
                     item: newitem,
                     price: newprice,
@@ -181,6 +181,59 @@ router.get('/cart', function (req, res, next) {
     else {
         res.render('users/login', {message: req.flash('loginMessage')});
     }
+});
+
+router.post('/removeall', function (req, res, next) {
+    Cart.findOne({owner: req.user._id}, function (err, cartFound) {
+
+        cartFound.items.pull(String(req.body.item));
+
+        cartFound.total = (cartFound.total - parseFloat(req.body.price)).toFixed(2);
+
+        cartFound.save(function (err, found) {
+            if (err) return next(err);
+            req.flash('remove', 'Successfully removed');
+            res.redirect('/cart');
+        });
+    });
+});
+
+router.post('/removeone', function (req, res, next) {
+    Cart.findOne({owner: req.user._id}, function (err, cartFound) {
+        for (var i = 0; i < cartFound.items.length; i++) {
+            if (cartFound.items[i]._id == req.body.item) {
+                console.log(cartFound.items[i].quantity);
+                if (cartFound.items[i].quantity==1) {
+                    cartFound.items.pull(String(req.body.item));
+                    cartFound.total = cartFound.total - parseFloat(req.body.price);
+                }
+                else {
+                    var quantityValue = parseInt(cartFound.items[i].quantity);
+                    var priceValue = parseFloat(cartFound.items[i].price);
+                    var unitPrice = priceValue/quantityValue;
+                    console.log(unitPrice + "unitPrice");
+                    var newquantity = quantityValue - 1;
+                    var newprice = priceValue - unitPrice;
+                    var newitem = cartFound.items[i].item;
+
+                    //update db
+                    cartFound.items.pull({_id: cartFound.items[i]._id});
+                    cartFound.items.push({
+                        item: newitem,
+                        price: newprice,
+                        quantity: newquantity
+                    });
+                    cartFound.total = cartFound.total - unitPrice;
+                }
+            }
+        }
+
+        cartFound.save(function (err, found) {
+            if (err) return next(err);
+            req.flash('remove', 'Successfully removed');
+            res.redirect('/cart');
+        });
+    });
 });
 
 //==================================================================
