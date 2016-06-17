@@ -1,0 +1,32 @@
+<% layout('layout') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <% for (var i = 0; i < cartFound.items.length; i++) { %>
+
+            <div class="list-group">
+                <span class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <span><img class="product-image" src="<%= cartFound.items[i].item.image %>"></span>
+                        </div>
+
+                         <div class="col-md-6">
+                            <p class="list-group-item-heading"><%= cartFound.items[i].item.name %></p>
+                         </div>
+
+                         <div class="col-md-3">
+                             <p><%= cartFound.items[i].quantity %></p>
+                             <p><%= cartFound.items[i].price %></p>
+                         </div>
+                    </div>
+                </span>
+            </div>
+
+            <% } %>
+
+        </div>
+    </div>
+</div>

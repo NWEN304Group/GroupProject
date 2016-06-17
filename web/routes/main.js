@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var product = require('../product/product')
+var Cart = require('../shopping_cart/cart');
 
 router.get('/', function (req, res, next) {
     if (req.user) {
@@ -41,6 +42,8 @@ router.get('/', function (req, res, next) {
     }
 });
 
+//==============================product ===============================
+
 //get products from id of one category
 router.get('/products/:category_id', function (req, res, next) {
     //search in mongodb
@@ -62,27 +65,6 @@ router.get('/product/:product_id', function (req, res, next) {
         if (err) return next(err);
         res.render('product/productPage', {
             productFound: productFound
-        });
-    });
-});
-
-//add product to user's cart and update cart
-router.post('/cart/add/:product_id', function(req, res, next) {
-    //find user's cart from db
-    Cart.findOne({ owner: req.user._id }, function(err, cart) {
-        //add product to cart
-        cart.items.push({
-            item: req.body.product_id,
-            price: parseFloat(req.body.priceValue),
-            quantity: parseInt(req.body.quantity)
-        });
-
-        //update total
-        cart.total = (cart.total + parseFloat(req.body.priceValue)).toFixed(2);
-
-        cart.save(function(err) {
-            if (err) return next(err);
-            return res.redirect('/cart');
         });
     });
 });
@@ -127,5 +109,45 @@ router.get('/pagenotlogin/:page', function (req, res, next) {
         });
 });
 
+//=======================shopping cart===========================
+
+//add product to user's cart and update cart
+router.post('/product/:product_id', function(req, res, next) {
+    //find user's cart from db
+    Cart.findOne({ owner: req.user._id }, function(err, cart) {
+        //add product to cart
+        cart.items.push({
+            item: req.body.product_id,
+            price: parseFloat(req.body.priceValue),
+            quantity: parseInt(req.body.quantity)
+        });
+
+        //update total
+        cart.total = (cart.total + parseFloat(req.body.priceValue)).toFixed(2);
+
+        cart.save(function(err) {
+            if (err) return next(err);
+            return res.redirect('/cart');
+        });
+    });
+});
+
+//response : cart page, cartFound,message
+router.get('/cart', function(req, res, next) {
+    //find user's cart from db
+    Cart
+        .findOne({ owner: req.user._id })
+        .populate('items.item')
+        .exec(function(err, cartFound) {
+            if (err) return next(err);
+            res.render('cart/cart', {
+                cartFound: cartFound,
+                message: req.flash('remove')
+            });
+        });
+
+});
+
+//==================================================================
 
 module.exports = router;

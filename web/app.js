@@ -14,6 +14,7 @@ var secret = require('./config/secret');
 var User = require('./models/user');
 var categorySchema = require('./product/category');
 var productSchema = require('./product/product');
+var getNumInCart = require('./shopping_cart/getNumInCart');
 
 var app = express();
 
@@ -82,6 +83,9 @@ app.use(mainRoute);
 app.use(userRoute);
 app.use(operateDBRoute);
 //-----------------------
+
+//shoping cart
+app.use(getNumInCart);
 
 app.listen(secret.port, function (error) {
     if (error) throw error;
