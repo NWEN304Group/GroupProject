@@ -17,12 +17,16 @@ router.post('/login', passport.authenticate('local-login', {
 }));
 
 router.get('/profile', function (req, res, next) {
-    User.findOne({_id: req.user._id}, function (err, user) {
-        if (err) return next(err);
+    if (req.user)
+        User.findOne({_id: req.user._id}, function (err, user) {
+            if (err) return next(err);
 
-        res.render('users/profile', {user: user});
+            res.render('users/profile', {user: user});
 
-    });
+        });
+    else {
+        res.render('users/login', {message: req.flash('loginMessage')});
+    }
 });
 
 router.get('/signup', function (req, res, next) {
