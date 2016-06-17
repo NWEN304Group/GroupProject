@@ -42,10 +42,10 @@ router.get('/', function (req, res, next) {
 });
 
 //get products from id of one category
-router.get('/products/:id', function (req, res, next) {
+router.get('/products/:category_id', function (req, res, next) {
     //search in mongodb
     product
-        .find({category: req.params.id})
+        .find({category: req.params.category_id})
         .populate('category')
         .exec(function (err, products) {
             if (err) return next(err);
@@ -57,11 +57,32 @@ router.get('/products/:id', function (req, res, next) {
 // test id 57623034ec93478e42015cfb
 
 //get a product by id
-router.get('/product/:id', function (req, res, next) {
-    product.findById({_id: req.params.id}, function (err, productFound) {
+router.get('/product/:product_id', function (req, res, next) {
+    product.findById({_id: req.params.product_id}, function (err, productFound) {
         if (err) return next(err);
-        res.render('product/oneProductPage', {
+        res.render('product/productPage', {
             productFound: productFound
+        });
+    });
+});
+
+//add product to user's cart and update cart
+router.post('/product/:product_id', function(req, res, next) {
+    //find user's cart from db
+    Cart.findOne({ owner: req.user._id }, function(err, cart) {
+        //add product to cart
+        cart.items.push({
+            item: req.body.product_id,
+            price: parseFloat(req.body.priceValue),
+            quantity: parseInt(req.body.quantity)
+        });
+
+        //update total
+        cart.total = (cart.total + parseFloat(req.body.priceValue)).toFixed(2);
+
+        cart.save(function(err) {
+            if (err) return next(err);
+            return res.redirect('/cart');
         });
     });
 });

@@ -3,7 +3,7 @@ var User = require('../models/user');
 var passport = require('passport');
 var passportConf = require('../config/passport');
 var async = require('async');
-var cartSchema = require('../models/cart');
+var cartDB = require('../shopping_cart/cart');
 
 router.get('/login', function (req, res) {
     if (req.user) return res.redirect('/');
@@ -55,7 +55,7 @@ router.post('/signup', function (req, res, next) {
             });
         },
         function (user) {
-            var cart = new cartSchema();
+            var cart = new cartDB();
             cart.owner = user._id;
             cart.save(function (err) {
                 if (err) return next(err);
