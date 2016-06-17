@@ -67,7 +67,7 @@ router.get('/product/:product_id', function (req, res, next) {
 });
 
 //add product to user's cart and update cart
-router.post('/product/:product_id', function(req, res, next) {
+router.post('/cart/add/:product_id', function(req, res, next) {
     //find user's cart from db
     Cart.findOne({ owner: req.user._id }, function(err, cart) {
         //add product to cart

@@ -3,15 +3,43 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-sm-4">
+        <%/*<div class="col-sm-4">*/%>
+        <div class="col-md-4">
             <img src="<%= productFound.image %>">
         </div>
 
+        <div class="col-md-4"></div>
 
         <div class="col-md-4">
             <h3><%= productFound.name %></h3>
             <h1><%= productFound.price %></h1>
 
+            <form method="post">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" id="decrease_button_productpage" class="btn btn-default">-</button>
+                    <input type="hidden" name="quantity" id="quantity_productpage" value="1"></input>
+                    <button type="button" id="total_number_productpage" class="btn btn-default">1</button>
+                    <button type="button" id="increase_button_productpage" class="btn btn-default">+</button>
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="product_id" id="product_id_productpage" value="<%= productFound._id %>"></input>
+
+                    <input type="text" readonly="true" name="item" class="form-control"
+                           value="<%= productFound.name %>"></input>
+
+                    <input type="hidden" name="unitPrice" id="unitPrice_productpage" value="<%= productFound.price %>"></input>
+                    <input type="text" readonly="true" name="priceValue" id="priceValue_productpage" class="form-control"
+                           value="<%= productFound.price %>"></input>
+
+                </div>
+
+                <% if (user)  { %>
+                <button type="add-to-cart" class="btn btn-primary btn-lg">Add To Cart</button>
+                <% } else { %>
+                <a href='/signup' class="btn btn-warning btn-lg">Please Sign Up</a>
+                <% } %>
+            </form>
         </div>
     </div>
 </div>
