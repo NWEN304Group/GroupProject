@@ -17,13 +17,14 @@ router.post('/login', passport.authenticate('local-login', {
 }));
 
 router.get('/profile', function (req, res, next) {
-    if (req.user)
-        User.findOne({_id: req.user._id}, function (err, user) {
-            if (err) return next(err);
-
-            res.render('users/profile', {user: user});
-
-        });
+    if (req.user) {
+        User.findOne({_id: req.user._id}).populate('history.item')
+            .exec(function (err, user) {
+                if (err) return next(err);
+                res.render('users/profile', {user: user});
+            })
+        ;
+    }
     else {
         res.render('users/login', {message: req.flash('loginMessage')});
     }
@@ -58,6 +59,7 @@ router.post('/signup', function (req, res, next) {
                 }
             });
         },
+        //new a cart and link to user in db
         function (user) {
             var cart = new cartDB();
             cart.owner = user._id;
@@ -101,7 +103,7 @@ router.post('/edit-profile', function (req, res, next) {
 
 router.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 
-router.get('/auth/facebook/callback', passport.authenticate('facebook',{
+router.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/profile',
     failureRedirect: '/login'
 }));
