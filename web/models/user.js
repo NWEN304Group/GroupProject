@@ -9,6 +9,10 @@ var userSchema = new mongoose.Schema({
 
 	password: String,
 
+	facebook: String,
+
+	tokens: Array,
+
 	address: {
 		type: String, default: ''
 	},
