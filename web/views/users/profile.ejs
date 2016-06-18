@@ -29,12 +29,16 @@
         <thead>
         <tr>
           <th>Product</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
           <th>Total Paid</th>
         </tr>
         <tbody>
         <% for(var i = 0; i < user.history.length; i++) {%>
         <tr>
           <td><%= user.history[i].item.name %></td>
+          <td><%= user.history[i].quantity %></td>
+          <td><%= user.history[i].item.price %></td>
           <td><%= user.history[i].paid %></td>
         </tr>
         <% } %>

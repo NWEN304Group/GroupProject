@@ -24,6 +24,7 @@ var userSchema = new mongoose.Schema({
 	history: [{
 		paid: { type: Number, default: 0},
 		// quantiry:{type:},
+		quantity:{type:Number, default: 0},
 		item: { type: Schema.Types.ObjectId, ref: 'Product'}
 	}]
 });

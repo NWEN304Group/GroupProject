@@ -253,7 +253,8 @@ router.get('/payment', function (req, res, next) {
                     for (var i = 0; i < cart.items.length; i++) {
                         user.history.push({
                             item: cart.items[i].item,
-                            paid: cart.items[i].price
+                            paid: cart.items[i].price,
+                            quantity: cart.items[i].quantity
                         });
                     }
 
