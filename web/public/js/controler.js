@@ -41,6 +41,6 @@ $(function() {
     });
 
     $(document).on("click", "#confirm-payment", function(event){
-        redirect("/");
+        window.location.href = "/payment";
     });
 });

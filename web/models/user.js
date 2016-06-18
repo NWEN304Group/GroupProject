@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
+var Schema = mongoose.Schema;
 
 var userSchema = new mongoose.Schema({
 	email: { 
@@ -19,7 +20,11 @@ var userSchema = new mongoose.Schema({
 
 	profile: {
 		name: {type: String, default: ''}
-	}
+	},
+	history: [{
+		paid: { type: Number, default: 0},
+		item: { type: Schema.Types.ObjectId, ref: 'Product'}
+	}]
 });
 
 userSchema.pre('save', function(next){

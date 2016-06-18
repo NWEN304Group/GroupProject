@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="91341ab0-c115-4b63-a002-c94b22469a85" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/routes/user.js" afterPath="$PROJECT_DIR$/web/routes/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/models/user.js" afterPath="$PROJECT_DIR$/web/models/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/public/js/controler.js" afterPath="$PROJECT_DIR$/web/public/js/controler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/routes/main.js" afterPath="$PROJECT_DIR$/web/routes/main.js" />
     </list>
     <ignored path="GroupProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +29,48 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/routes/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="271" column="3" selection-start-line="271" selection-start-column="3" selection-end-line="271" selection-end-column="3" />
+            <state relative-caret-position="1695">
+              <caret line="238" column="3" selection-start-line="238" selection-start-column="3" selection-end-line="238" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/routes/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/models/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/views/users/profile.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="productPage.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/views/product/productPage.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -44,44 +86,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/routes/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-332">
-              <caret line="58" column="15" selection-start-line="58" selection-start-column="15" selection-end-line="58" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="controler.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/public/js/controler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+            <state relative-caret-position="313">
+              <caret line="44" column="7" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.ejs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/views/layout.ejs">
+      <file leaf-file-name="cart.ejs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/views/cart/cart.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cart.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/shopping_cart/cart.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#43#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -103,7 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/backend/index.js" />
         <option value="$PROJECT_DIR$/BackEnd/README" />
         <option value="$PROJECT_DIR$/FrontEnd/GhostWeb/css/css.css" />
         <option value="$PROJECT_DIR$/FrontEnd/GhostWeb/css/purchase.css" />
@@ -124,7 +143,6 @@
         <option value="$PROJECT_DIR$/web/views/admin/add-categoty.js" />
         <option value="$PROJECT_DIR$/web/views/admin/add-category.js" />
         <option value="$PROJECT_DIR$/web/views/admin/add-category.ejs" />
-        <option value="$PROJECT_DIR$/web/views/users/profile.ejs" />
         <option value="$PROJECT_DIR$/web/views/main/productPage.ejs" />
         <option value="$PROJECT_DIR$/web/config/secret.js" />
         <option value="$PROJECT_DIR$/web/models/category.js" />
@@ -149,11 +167,13 @@
         <option value="$PROJECT_DIR$/web/views/product/productPage.ejs" />
         <option value="$PROJECT_DIR$/web/views/partials/navbar.ejs" />
         <option value="$PROJECT_DIR$/web/public/css/custom.css" />
-        <option value="$PROJECT_DIR$/web/routes/main.js" />
         <option value="$PROJECT_DIR$/web/views/layout.ejs" />
         <option value="$PROJECT_DIR$/web/views/cart/cart.ejs" />
         <option value="$PROJECT_DIR$/web/public/js/controler.js" />
+        <option value="$PROJECT_DIR$/web/routes/main.js" />
         <option value="$PROJECT_DIR$/web/routes/user.js" />
+        <option value="$PROJECT_DIR$/web/views/users/profile.ejs" />
+        <option value="$PROJECT_DIR$/web/models/user.js" />
       </list>
     </option>
   </component>
@@ -231,6 +251,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GroupProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GroupProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -620,12 +662,12 @@
       <workItem from="1466033794318" duration="45000" />
       <workItem from="1466034050109" duration="25890000" />
       <workItem from="1466071613082" duration="13388000" />
-      <workItem from="1466087321935" duration="43763000" />
+      <workItem from="1466087321935" duration="49278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120251000" />
+    <option name="totallyTimeSpent" value="125766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="469" y="23" width="802" height="736" extended-state="0" />
@@ -751,13 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/users/profile.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/node_modules/express/lib/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2100">
@@ -847,14 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/product/productPage.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/product/productsHomePage.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="487">
@@ -879,26 +906,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/models/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-122">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/partials/navbar.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/shopping_cart/getNumInCart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -935,26 +946,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/public/js/controler.js">
+    <entry file="file://$PROJECT_DIR$/web/shopping_cart/cart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+        <state relative-caret-position="225">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/shopping_cart/getNumInCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/cart/cart.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="79" column="74" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/routes/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="271" column="3" selection-start-line="271" selection-start-column="3" selection-end-line="271" selection-end-column="3" />
+        <state relative-caret-position="255">
+          <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -967,20 +980,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/shopping_cart/cart.js">
+    <entry file="file://$PROJECT_DIR$/web/public/js/controler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="313">
+          <caret line="44" column="7" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/product/productPage.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/routes/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1695">
+          <caret line="238" column="3" selection-start-line="238" selection-start-column="3" selection-end-line="238" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/routes/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-332">
-          <caret line="58" column="15" selection-start-line="58" selection-start-column="15" selection-end-line="58" selection-end-column="15" />
+        <state relative-caret-position="134">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/users/profile.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding />
         </state>
       </provider>

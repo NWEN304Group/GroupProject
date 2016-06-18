@@ -1,6 +1,8 @@
 var router = require('express').Router();
 var product = require('../product/product')
 var Cart = require('../shopping_cart/cart');
+var async = require('async');
+var User = require('../models/user');
 
 router.get('/', function (req, res, next) {
     if (req.user) {
@@ -237,7 +239,7 @@ router.post('/removeone', function (req, res, next) {
 });
 
 //=============================payment==============================
-router.post('/payment', function (req, res, next) {
+router.get('/payment', function (req, res, next) {
     async.waterfall([
         function (callback) {
             Cart.findOne({owner: req.user._id}, function (err, cart) {
@@ -247,6 +249,7 @@ router.post('/payment', function (req, res, next) {
         function (cart, callback) {
             User.findOne({_id: req.user._id}, function (err, user) {
                 if (user) {
+                    //add to purchase history
                     for (var i = 0; i < cart.items.length; i++) {
                         user.history.push({
                             item: cart.items[i].item,
@@ -262,8 +265,10 @@ router.post('/payment', function (req, res, next) {
             });
         },
         function (user) {
+            //empty items in cart
             Cart.update({owner: user._id}, {$set: {items: [], total: 0}}, function (err, updated) {
                 if (updated) {
+                    //redirect
                     res.redirect('/profile');
                 }
             });
