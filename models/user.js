@@ -3,7 +3,9 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var Schema = mongoose.Schema;
 
+// User schema attributes
 var userSchema = new mongoose.Schema({
+	// key of users
 	email: { 
 		type: String, unique: true, lowercase: true
 	},
@@ -20,7 +22,7 @@ var userSchema = new mongoose.Schema({
 
 	profile: {
 		name: {type: String, default: ''},
-		weather: {type: String, default: ''}
+		weather: {text: String, code: Number}
 	},
 	history: [{
 		paid: { type: Number, default: 0},

@@ -17,13 +17,26 @@ router.post('/login', passport.authenticate('local-login', {
     failureFlash: true
 }));
 
+// login api passin: email password
+router.post('/api/login', function (req, res, next) {
+    var email = req.body.email;
+    var password = req.body.password;
+    User.findOne({ email: email}, function(err, user){
+        if (err) return res.status(500).send('Database fail');
+        if (!user) return res.status(401).send('User not found');
+        if (!user.varifyPassword(password)) return res.status(401).send('Password wrong');
+        passport.authenticate('local-login');
+        return res.status(200).send('success');
+    })
+});
+
 router.get('/profile', function (req, res, next) {
     if (req.user) {
         User.findOne({_id: req.user._id}).populate('history.item')
             .exec(function (err, user) {
                 // Weather based recommendation
-                if(user.profile.weather){
-                    product.find({weather: user.profile.weather})
+                if(user.profile.weather.text){
+                    product.find({weather: user.profile.weather.code})
                     .exec(function (err, products) {
                         if (err) return next(err);
                         res.render('users/profile', {user: user, products: products});
@@ -54,7 +67,7 @@ router.post('/signup', function (req, res, next) {
             user.profile.name = req.body.name;
             user.email = req.body.email;
             user.password = req.body.password;
-
+            // if email already exist then decline the singup
             User.findOne({email: req.body.email}, function (err, existingUser) {
 
                 if (existingUser) {
@@ -79,6 +92,40 @@ router.post('/signup', function (req, res, next) {
                         res.redirect('/profile');
                     }
                 )
+            });
+        }
+    ])
+});
+
+// signup api
+router.post('/api/signup', function (req, res, next) {
+    async.waterfall([
+        function (callback) {
+            var user = new User();
+
+            user.profile.name = req.body.name;
+            user.email = req.body.email;
+            user.password = req.body.password;
+            // if email already exist then decline the singup
+            User.findOne({email: req.body.email}, function (err, existingUser) {
+
+                if (existingUser) {
+                    return res.status(401).send('Account with that email address already exists');
+                } else {
+                    user.save(function (err, user) {
+                        if (err) return res.status(500).send('Database fail');
+                        res.status(200).send('User created success');
+                        callback(null, user);
+                    });
+                }
+            });
+        },
+        //new a cart and link to user in db
+        function (user) {
+            var cart = new cartDB();
+            cart.owner = user._id;
+            cart.save(function (err) {
+                if (err) res.status(500).send('Database fail');
             })
         }
     ])
@@ -117,21 +164,23 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/login'
 }));
 
-//Set weather to user for products recommendation.
-router.put('/weather/:weather', function(req, res, next){
-  var weather = req.params.weather;
+// Set weather to user for products recommendation.
+router.post('/weather', function(req, res, next){
+  var weather = req.body.weather;
+  var wcode = req.body.wcode;
   if (!req.user) return;
   User.findOne({ _id: req.user._id }, function(err, user) {
 
     if (err) return next(err);
 
-    if(weather) user.profile.weather = weather;
-
+    if(weather) {
+        user.profile.weather.text = weather;
+        user.profile.weather.code = wcode;
+    }
     user.save(function(err) {
     if (err) return next(err);
     });
   });
-  console.log(weather);
   res.status(200).send('OK');
 });
 

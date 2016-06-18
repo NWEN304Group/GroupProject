@@ -49,7 +49,7 @@
 
       <div class="row">
       <% if(products && products.length>0) {%>
-       <h3 class="text-center">It is <%= user.profile.weather %>, you will like:</h3>
+       <h3 class="text-center">It is <%= user.profile.weather.text %>, you will like:</h3>
        <% for (var i = 0; i < products.length; i++) { %>
         <div class="col-md-4">
             <a href="/product/<%= products[i]._id %>">
@@ -64,8 +64,8 @@
             </a>
         </div>
         <% } %>
-      <% } else if(user.profile.weather){%>
-          <h3 class="text-center">Your weather is <%= user.profile.weather %>, nothing to recommend.</h3>
+      <% } else if(user.profile.weather.text){%>
+          <h3 class="text-center">Your weather is <%= user.profile.weather.text %>, nothing to recommend.</h3>
       <% } %>
     </div>
 

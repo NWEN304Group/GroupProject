@@ -3,12 +3,15 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var secret = require('./secret');
 var User = require('../models/user');
+var async = require('async');
+var Cart = require('../shopping_cart/cart');
 
-// serialize and deserialize
+// serialize  user id to session
 passport.serializeUser(function(user, done) {
   done(null, user._id);
 });
 
+// deserialize user id and get user object and attach user to req.user
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);
@@ -19,6 +22,7 @@ passport.deserializeUser(function(id, done) {
 //Middleware
 // name local-login
 passport.use('local-login', new LocalStrategy({
+  // email and password from post req
   usernameField: 'email',
   passwordField: 'password',
   passReqToCallback: true
@@ -43,15 +47,29 @@ passport.use(new FacebookStrategy(secret.facebook, function(token, refreshToken,
     if(user){
       return done(null, user);
     }else {
-      var newUser = new User();
-      newUser.email = profile._json.email;
-      newUser.facebook = profile.id;
-      newUser.tokens.push({kind: 'facebook', token: token});
-      newUser.profile.name = profile.displayName;
-      newUser.save(function(error){
-        if(error) throw error;
-        return done(null, newUser);
-      });
+      async.waterfall([
+        function(callback){
+          var newUser = new User();
+          newUser.email = profile._json.email;
+          newUser.facebook = profile.id;
+          newUser.tokens.push({kind: 'facebook', token: token});
+          newUser.profile.name = profile.displayName;
+          newUser.save(function(error){
+            if(error) throw error;
+            callback(error, newUser);
+          });
+        },
+
+        function(newUser){
+          var cart = new Cart();
+            cart.owner = newUser._id;
+            cart.save(function (err) {
+              if (err) return done(err);
+              return done(err, newUser);
+          });
+        }
+
+      ])
     }
   });
 }));
