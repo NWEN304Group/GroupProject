@@ -108,4 +108,22 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/login'
 }));
 
+//Set weather to user for products recommendation.
+router.put('/weather/:weather', function(req, res, next){
+  var weather = req.params.weather;
+  if (!req.user) return;
+  User.findOne({ _id: req.user._id }, function(err, user) {
+
+    if (err) return next(err);
+
+    if(weather) user.profile.weather = weather;
+
+    user.save(function(err) {
+    if (err) return next(err);
+    });
+  });
+  console.log(weather);
+  res.status(200).send('OK');
+});
+
 module.exports = router;

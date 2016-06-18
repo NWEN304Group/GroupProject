@@ -19,7 +19,8 @@ var userSchema = new mongoose.Schema({
 	},
 
 	profile: {
-		name: {type: String, default: ''}
+		name: {type: String, default: ''},
+		weather: {type: String, default: ''}
 	},
 	history: [{
 		paid: { type: Number, default: 0},

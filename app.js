@@ -40,6 +40,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: secret.secretKey,
+    // set timeout 10mins
+    cookie:{maxAge : 600000},
     store: new MongoStore({url: secret.database, autoReconnect: true})
 }));
 
