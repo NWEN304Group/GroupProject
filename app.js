@@ -1,3 +1,4 @@
+var port = process.env.PORT || 8080;
 var express = require('express');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
@@ -87,7 +88,7 @@ app.use(operateDBRoute);
 //shoping cart
 app.use(getNumInCart);
 
-app.listen(secret.port, function (error) {
+app.listen(port, function (error) {
     if (error) throw error;
-    console.log("Server is listenning on port " + secret.port);
+    console.log("Server is listenning on port " + port);
 });
