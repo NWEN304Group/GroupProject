@@ -4,6 +4,7 @@ var passport = require('passport');
 var passportConf = require('../config/passport');
 var async = require('async');
 var cartDB = require('../shopping_cart/cart');
+var product = require('../product/product')
 
 router.get('/login', function (req, res) {
     if (req.user) return res.redirect('/');
@@ -20,10 +21,18 @@ router.get('/profile', function (req, res, next) {
     if (req.user) {
         User.findOne({_id: req.user._id}).populate('history.item')
             .exec(function (err, user) {
-                if (err) return next(err);
-                res.render('users/profile', {user: user});
-            })
-        ;
+                // Weather based recommendation
+                if(user.profile.weather){
+                    product.find({weather: user.profile.weather})
+                    .exec(function (err, products) {
+                        if (err) return next(err);
+                        res.render('users/profile', {user: user, products: products});
+                    });
+                }else {
+                    res.render('users/profile', {user: user, products: undefined});
+                }
+                
+            });
     }
     else {
         res.render('users/login', {message: req.flash('loginMessage')});

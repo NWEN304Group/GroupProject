@@ -14,11 +14,11 @@ function loadWeather(location, woeid){
 		woeid: woeid,
 		unit: 'c',
 		success: function(weather){
-			wcode = weather.code;
-			city  = weather.city;
-			console.log(weather.currently);
-			console.log(wcode);
-			console.log(city);
+			// wcode = weather.code;
+			// city  = weather.city;
+			// console.log(weather.currently);
+			// console.log(wcode);
+			// console.log(city);
 
 			$.ajax({
             url: '/weather/' + weather.currently,

@@ -1,5 +1,5 @@
 <% layout('layout') -%>
-
+<script src="/js/weather.js"></script>
 <div class="container">
 
   <div class="row">
@@ -7,7 +7,6 @@
       <br />
       <p>Name: <%= user.profile.name %></p>
       <p>Email: <%= user.email %></p>
-      <p>Weather: <%= user.profile.weather %></p>
       <% if (user.address === "" || typeof user.address === 'undefined')  { %>
         <p>Address: <span style="color: #c0392b; font-weight: bold">You have no address</span></p>
 
@@ -23,6 +22,7 @@
     </div>
 
     <div class="col-md-6">
+    <% if(user.history.length>0) {%>
       <h2 class="text-center">Purchase History</h2>
 
       <table class="table table-striped sticky-header">
@@ -45,6 +45,29 @@
         </tbody>
         </thead>
       </table>
+    <% } %>
+
+      <div class="row">
+      <% if(products && products.length>0) {%>
+       <h3 class="text-center">It is <%= user.profile.weather %>, you will like:</h3>
+       <% for (var i = 0; i < products.length; i++) { %>
+        <div class="col-md-4">
+            <a href="/product/<%= products[i]._id %>">
+                <div class="thumbnail">
+                    <img src="<%= products[i].image %>">
+                    <div class="caption">
+                        <h3><%= products[i].name %></h3>
+                        <p><%= products[i].category.name %></p>
+                        <p>$<%= products[i].price %></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <% } %>
+      <% } else if(user.profile.weather){%>
+          <h3 class="text-center">Your weather is <%= user.profile.weather %>, nothing to recommend.</h3>
+      <% } %>
+    </div>
 
     </div>
   </div>
