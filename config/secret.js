@@ -10,5 +10,6 @@ module.exports = {
   	clientSecret: process.env.FACEBOOK_SECRET || 'a158b766ecdb6181d123a6ea4f3b6fb0',
   	profileFields: ['emails', 'displayName'],
   	callbackURL: 'https://nwen304-shopping-project.herokuapp.com/auth/facebook/callback'
+    // callbackURL: 'http://localhost:8080/auth/facebook/callback'
   }
 }
