@@ -42,8 +42,8 @@ passport.use('local-login', new LocalStrategy({
 }));
 
 passport.use(new FacebookStrategy(secret.facebook, function(token, refreshToken, profile, done){
-  User.findOne({facebook: profile.id}, function(error, user){
-    if(error) return done(error);
+  User.findOne({facebook: profile.id}, function(err, user){
+    if(err) return done(err);
     if(user){
       return done(null, user);
     }else {
@@ -54,9 +54,9 @@ passport.use(new FacebookStrategy(secret.facebook, function(token, refreshToken,
           newUser.facebook = profile.id;
           newUser.tokens.push({kind: 'facebook', token: token});
           newUser.profile.name = profile.displayName;
-          newUser.save(function(error){
-            if(error) throw error;
-            callback(error, newUser);
+          newUser.save(function(err){
+            if(err) throw err;
+            callback(err, newUser);
           });
         },
 
