@@ -27,11 +27,12 @@
       </div>
       <div class="form-group">
         <label="name">Password: </label>
-        <input id="password" type="password" class="form-control" name="password" required>
+        <input id="password" type="password" data-minlength="6" class="form-control" name="password" required>
+        <div class="help-block">Minimum of 6 characters</div>
       </div>
       <div class="form-group">
         <label="name">Confirm Password: </label>
-        <input id="confirm_password" type="password" class="form-control" name="confirm_password" data-match="#password" data-match-error="Whoops, these don't match" required>
+        <input id="confirm_password" type="password" data-minlength="6" class="form-control" name="confirm_password" data-match="#password" data-match-error="Whoops, these don't match" required>
       </div>
 
       <button type="submit" class="btn btn-success">Submit</button>
