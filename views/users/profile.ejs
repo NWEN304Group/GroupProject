@@ -64,11 +64,11 @@
             </a>
         </div>
         <% } %>
-      <% } else if(user.profile.weather.text){%>
-          <h3 class="text-center">Your weather is <%= user.profile.weather.text %>, nothing to recommend.</h3>
       <% } %>
     </div>
-
+        <%  if(user.profile.weather.text){%>
+        <h3 class="text-center">Your weather is <%= user.profile.weather.text %>, nothing to recommend.</h3>
+        <% } %>
     </div>
   </div>
 </div>
