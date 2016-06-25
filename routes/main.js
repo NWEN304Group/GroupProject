@@ -17,6 +17,7 @@ router.get('/', function (req, res, next) {
                 product.count().exec(function (err, count) {
                     if (err) return next(err);
                     var num = Math.ceil(count / productsInOnePage);
+                    res.setHeader('Cache-Control','public,max-age=120s');
                     res.render('product/productsHomePage', {
                         products: products,
                         numOfPage: num
@@ -35,6 +36,7 @@ router.get('/', function (req, res, next) {
                 product.count().exec(function (err, count) {
                     if (err) return next(err);
                     var num = Math.ceil(count / productsInOnePage);
+                    res.setHeader('Cache-Control','max-age=120');
                     res.render('main/index', {
                         products: products,
                         numOfPage: num
