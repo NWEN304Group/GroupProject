@@ -83,7 +83,7 @@ router.get('/profile', function (req, res, next) {
                                 product.find({weather: user.profile.weather.code})
                                     .exec(function (err, products) {
                                         if (err) return next(err);
-                                        res.render('users/profile', {user: user, products: undefined,recomandproduct:recomandproduct});
+                                        res.render('users/profile', {user: user, products: products,recomandproduct:recomandproduct});
                                     });
                             }else {
                                 res.render('users/profile', {user: user, products: undefined,recomandproduct:recomandproduct});
