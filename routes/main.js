@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
                 product.count().exec(function (err, count) {
                     if (err) return next(err);
                     var num = Math.ceil(count / productsInOnePage);
-                    res.render('product/productsHomePage', {
+                    res.status(200).render('product/productsHomePage', {
                         products: products,
                         numOfPage: num
                     });
@@ -35,7 +35,7 @@ router.get('/', function (req, res, next) {
                 product.count().exec(function (err, count) {
                     if (err) return next(err);
                     var num = Math.ceil(count / productsInOnePage);
-                    res.render('main/index', {
+                    res.status(200).render('main/index', {
                         products: products,
                         numOfPage: num
                     });
@@ -61,7 +61,7 @@ router.get('/products/:category_id', function (req, res, next) {
                     });
                 return;
             }
-            res.render('product/productsOfCategory', {
+            res.status(200).render('product/productsOfCategory', {
                 productsFound: products
             });
         });
@@ -79,7 +79,7 @@ router.get('/product/:product_id', function (req, res, next) {
                 });
             return;
         }
-        res.render('product/productPage', {
+        res.status(200).render('product/productPage', {
             productFound: productFound
         });
     });
@@ -111,7 +111,7 @@ router.get('/page/:page', function (req, res, next) {
                     return;
                 }
                 var num = Math.ceil(count / productsInOnePage);
-                res.render('product/productsHomePage', {
+                res.status(200).render('product/productsHomePage', {
                     products: products,
                     numOfPage: num
                 });
@@ -146,7 +146,7 @@ router.get('/pagenotlogin/:page', function (req, res, next) {
                 };
                 var num = Math.ceil(count / productsInOnePage);
                 res.setHeader('Cache-Control','max-age=200');
-                res.render('main/index', {
+                res.status(200).render('main/index', {
                     products: products,
                     numOfPage: num
                 });
@@ -212,7 +212,7 @@ router.post('/product/:product_id', function (req, res, next) {
                     });
                 return;
             };
-            return res.redirect('/cart');
+            return res.status(200).redirect('/cart');
         });
 
     });
@@ -234,13 +234,13 @@ router.get('/cart', function (req, res, next) {
                         });
                     return;
                 };
-                res.render('cart/cart', {
+                res.status(200).render('cart/cart', {
                     cartFound: cartFound,
                     message: req.flash('remove')
                 });
             });
     else {
-        res.render('users/login', {message: req.flash('loginMessage')});
+        res.status(200).render('users/login', {message: req.flash('loginMessage')});
     }
 });
 
@@ -261,7 +261,7 @@ router.post('/removeall', function (req, res, next) {
                 return;
             };
             req.flash('remove', 'Successfully removed');
-            res.redirect('/cart');
+            res.status(200).redirect('/cart');
         });
     });
 });
@@ -306,7 +306,7 @@ router.post('/removeone', function (req, res, next) {
                 return;
             };
             req.flash('remove', 'Successfully removed');
-            res.redirect('/cart');
+            res.status(200).redirect('/cart');
         });
     });
 });
@@ -369,7 +369,7 @@ router.get('/payment', function (req, res, next) {
             Cart.update({owner: user._id}, {$set: {items: [], total: 0}}, function (err, updated) {
                 if (updated) {
                     //redirect
-                    res.redirect('/profile');
+                    res.status(200).redirect('/profile');
                 }
             });
         }
