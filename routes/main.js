@@ -68,7 +68,7 @@ router.get('/products/:category_id', function (req, res, next) {
 });
 // test id 57623034ec93478e42015cfb
 
-//get a product by id
+//get a page that show details of a product
 router.get('/product/:product_id', function (req, res, next) {
     product.findById({_id: req.params.product_id}, function (err, productFound) {
         if (err) {
@@ -85,6 +85,7 @@ router.get('/product/:product_id', function (req, res, next) {
     });
 });
 
+//a page that show products that index is :page
 router.get('/page/:page', function (req, res, next) {
     var productsInOnePage = 6;
     var page = req.params.page;
