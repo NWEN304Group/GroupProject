@@ -54,7 +54,12 @@ router.get('/products/:category_id', function (req, res, next) {
         .populate('category')
         .exec(function (err, products) {
             if (err) {
-                res.status(500).render('error_handle/errorpage',{error:err,message:"Internal Server Error"});
+                res.status(500).render('error_handle/errorpage',
+                    {
+                        error:err,message:"Internal Server Error",
+                        request:'/products/:category_id',
+                        expected:"category page"
+                    });
                 return;
             }
             res.render('product/productsOfCategory', {
