@@ -145,7 +145,8 @@ router.post('/product/:product_id', function (req, res, next) {
                 cart.items.push({
                     item: newitem,
                     price: newprice,
-                    quantity: newquantity
+                    quantity: newquantity,
+                    category:req.body.category
                 });
             }
         }
@@ -153,7 +154,8 @@ router.post('/product/:product_id', function (req, res, next) {
             cart.items.push({
                 item: req.body.product_id,
                 price: parseFloat(req.body.priceValue),
-                quantity: parseInt(req.body.quantity)
+                quantity: parseInt(req.body.quantity),
+                category:req.body.category
             });
         }
         //update total
@@ -259,16 +261,25 @@ router.get('/payment', function (req, res, next) {
                             paid: cart.items[i].price,
                             quantity: cart.items[i].quantity
                         });
-                        //update recomndations
-                        user.recomand.push({
-                            item: cart.items[i].item,
-                            paid: cart.items[i].price,
-                            quantity: cart.items[i].quantity
-                        });
+                        //update recomndaCounter
+                        var added =0;
+                        //update quantity if category exist
+                       for(var j=0;j<user.recomandCounter.length;j++){
+                           if(user.recomandCounter[j].category._id==cart.items[i].category._id){
+                               user.recomandCounter[j].quantity+=cart.items[i].quantity;
+                               added =1;
+                           }
+                       }
+                        //add new category if no exist
+                        if(added==0){
+                            user.recomandCounter.push(
+                                {
+                                    category:cart.items[i].category,
+                                    quantity:cart.items[i].quantity
+                                }
+                            );
+                        }
                     }
-
-
-
 
                     user.save(function (err, user) {
                         if (err) return next(err);

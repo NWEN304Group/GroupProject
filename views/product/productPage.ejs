@@ -31,7 +31,8 @@
                     <input type="hidden" name="unitPrice" id="unitPrice_productpage" value="<%= productFound.price %>"></input>
                     <input type="text" readonly="true" name="priceValue" id="priceValue_productpage" class="form-control"
                            value="<%= productFound.price %>"></input>
-
+                    <input type="hidden"  name="category" id="category_productpage" class="form-control"
+                           value="<%= productFound.category %>"></input>
                 </div>
 
                 <% if (user)  { %>

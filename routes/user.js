@@ -32,19 +32,70 @@ router.post('/api/login', function (req, res, next) {
 
 router.get('/profile', function (req, res, next) {
     if (req.user) {
-        User.findOne({_id: req.user._id}).populate('history.item')
-            .exec(function (err, user) {
-                // Weather based recommendation
-                if(user.profile.weather.text){
-                    product.find({weather: user.profile.weather.code})
-                    .exec(function (err, products) {
-                        if (err) return next(err);
-                        res.render('users/profile', {user: user, products: products});
-                    });
-                }else {
-                    res.render('users/profile', {user: user, products: undefined});
-                }
-            });
+        //var recomandproduct;
+       // var recomandproducts;
+        //var lengthvar = 0;
+        //find recomand category
+        var bestcategory = -1;
+        var maxcount = 0;
+
+        for (var j = 0; j < req.user.recomandCounter.length; j++) {
+            if (req.user.recomandCounter[j].quantity > maxcount) {
+                bestcategory = req.user.recomandCounter[j].category;
+            }
+        }
+       // console.log(bestcategory);
+        if (bestcategory == -1) {
+            console.log(recomandproduct);
+            User.findOne({_id: req.user._id}).populate('history.item')
+                .exec(function (err, user) {
+                    // Weather based recommendation
+                    if(user.profile.weather.text){
+                        product.find({weather: user.profile.weather.code})
+                            .exec(function (err, products) {
+                                if (err) return next(err);
+
+                                    res.render('users/profile', {user: user, products: products,recomandproduct:-1});
+
+                            });
+                    }else {
+
+                            res.render('users/profile', {user: user, products: undefined,recomandproduct:-1});
+
+                    }
+                });
+        }
+        else{
+            //get a product from reconmand category
+            product
+                .findOne({category: bestcategory})
+                .populate('category')
+                .exec(function (err, recomandproduct) {
+                    if (err) return next(err);
+                    // lengthvar=products.length;
+                    //recomandproducts=products;
+                    console.log(recomandproduct);
+
+                    User.findOne({_id: req.user._id}).populate('history.item')
+                        .exec(function (err, user) {
+                            // Weather based recommendation
+                            if(user.profile.weather.text){
+                                product.find({weather: user.profile.weather.code})
+                                    .exec(function (err, products) {
+                                        if (err) return next(err);
+                                        res.render('users/profile', {user: user, products: undefined,recomandproduct:recomandproduct});
+                                    });
+                            }else {
+                                res.render('users/profile', {user: user, products: undefined,recomandproduct:recomandproduct});
+                            }
+                        });
+                });
+
+            //var index =Math.ceil( Math.random(lengthngthvar));
+            //recomandproduct=recomandproducts[index];
+        }
+
+
     }
     else {
         res.render('users/login', {message: req.flash('loginMessage')});
