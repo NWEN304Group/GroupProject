@@ -120,6 +120,7 @@ router.get('/page/:page', function (req, res, next) {
         });
 });
 
+//Get a page that show show products that index is :page with login buttons
 router.get('/pagenotlogin/:page', function (req, res, next) {
     var productsInOnePage = 6;
     var page = req.params.page;
@@ -219,7 +220,8 @@ router.post('/product/:product_id', function (req, res, next) {
     });
 });
 
-//response : cart page, cartFound,message
+//show cart page
+// response : cart page, cartFound,message
 router.get('/cart', function (req, res, next) {
     if (req.user)
     //find user's cart from db
@@ -245,6 +247,7 @@ router.get('/cart', function (req, res, next) {
     }
 });
 
+//remove all quanlity of one product in cart
 router.post('/removeall', function (req, res, next) {
     Cart.findOne({owner: req.user._id}, function (err, cartFound) {
 
@@ -267,6 +270,7 @@ router.post('/removeall', function (req, res, next) {
     });
 });
 
+//Remove 1 quanlity of one product in cart
 router.post('/removeone', function (req, res, next) {
     Cart.findOne({owner: req.user._id}, function (err, cartFound) {
         for (var i = 0; i < cartFound.items.length; i++) {
@@ -313,6 +317,7 @@ router.post('/removeone', function (req, res, next) {
 });
 
 //=============================payment==============================
+//confirm payment
 router.get('/payment', function (req, res, next) {
     async.waterfall([
         function (callback) {

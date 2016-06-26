@@ -47,7 +47,6 @@ router.get('/profile', function (req, res, next) {
         }
        // console.log(bestcategory);
         if (bestcategory == -1) {
-            console.log(recomandproduct);
             User.findOne({_id: req.user._id}).populate('history.item')
                 .exec(function (err, user) {
                     // Weather based recommendation
