@@ -53,7 +53,10 @@ router.get('/products/:category_id', function (req, res, next) {
         .find({category: req.params.category_id})
         .populate('category')
         .exec(function (err, products) {
-            if (err) return next(err);
+            if (err) {
+                res.status(500).render('error_handle/errorpage',{error:err,message:"Internal Server Error"});
+                return;
+            }
             res.render('product/productsOfCategory', {
                 productsFound: products
             });
@@ -64,7 +67,7 @@ router.get('/products/:category_id', function (req, res, next) {
 //get a product by id
 router.get('/product/:product_id', function (req, res, next) {
     product.findById({_id: req.params.product_id}, function (err, productFound) {
-        if (err) return next(err);
+        if (err) res.statu(404).send("page not founf");
         res.render('product/productPage', {
             productFound: productFound
         });
