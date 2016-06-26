@@ -44,7 +44,6 @@ router.get('/profile', function (req, res, next) {
                 }else {
                     res.render('users/profile', {user: user, products: undefined});
                 }
-                
             });
     }
     else {

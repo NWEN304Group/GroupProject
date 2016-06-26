@@ -251,14 +251,24 @@ router.get('/payment', function (req, res, next) {
         function (cart, callback) {
             User.findOne({_id: req.user._id}, function (err, user) {
                 if (user) {
-                    //add to purchase history
+
                     for (var i = 0; i < cart.items.length; i++) {
+                        //add to purchase history
                         user.history.push({
                             item: cart.items[i].item,
                             paid: cart.items[i].price,
                             quantity: cart.items[i].quantity
                         });
+                        //update recomndations
+                        user.recomand.push({
+                            item: cart.items[i].item,
+                            paid: cart.items[i].price,
+                            quantity: cart.items[i].quantity
+                        });
                     }
+
+
+
 
                     user.save(function (err, user) {
                         if (err) return next(err);

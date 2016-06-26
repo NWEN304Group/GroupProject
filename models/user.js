@@ -29,6 +29,10 @@ var userSchema = new mongoose.Schema({
 		// quantiry:{type:},
 		quantity:{type:Number, default: 0},
 		item: { type: Schema.Types.ObjectId, ref: 'Product'}
+	}],
+	recomand:[{
+		categoty:{type: Schema.Types.ObjectId, ref: 'Category'},
+		quantity:{type:Number, default: 0}
 	}]
 });
 
