@@ -30,7 +30,7 @@ mongoose.connect(secret.database, function (error) {
 });
 
 // Add middleware
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public', { maxAge: 86400000 })); // serve static content with caching
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
