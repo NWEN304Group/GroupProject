@@ -57,8 +57,7 @@ router.get('/products/:category_id', function (req, res, next) {
                 res.status(500).render('error_handle/errorpage',
                     {
                         error:err,message:"Internal Server Error",
-                        request:'/products/:category_id',
-                        expected:"category page"
+                        request:'get /products/'+req.params.category_id
                     });
                 return;
             }
@@ -72,7 +71,14 @@ router.get('/products/:category_id', function (req, res, next) {
 //get a product by id
 router.get('/product/:product_id', function (req, res, next) {
     product.findById({_id: req.params.product_id}, function (err, productFound) {
-        if (err) res.statu(404).send("page not founf");
+        if (err) {
+            res.status(500).render('error_handle/errorpage',
+                {
+                    error:err,message:"Internal Server Error",
+                    request:'get /products/'+req.params.product_id
+                });
+            return;
+        }
         res.render('product/productPage', {
             productFound: productFound
         });
@@ -87,9 +93,23 @@ router.get('/page/:page', function (req, res, next) {
         .limit(productsInOnePage)
         .populate('category')
         .exec(function (err, products) {
-            if (err) return next(err);
+            if (err) {
+                res.status(500).render('error_handle/errorpage',
+                    {
+                        error:err,message:"Internal Server Error",
+                        request:'GET /page/'+ req.params.page
+                    });
+                return;
+            }
             product.count().exec(function (err, count) {
-                if (err) return next(err);
+                if (err) {
+                    res.status(500).render('error_handle/errorpage',
+                        {
+                            error:err,message:"Internal Server Error",
+                            request:'GET /page/'+ req.params.page
+                        });
+                    return;
+                }
                 var num = Math.ceil(count / productsInOnePage);
                 res.render('product/productsHomePage', {
                     products: products,
@@ -107,9 +127,23 @@ router.get('/pagenotlogin/:page', function (req, res, next) {
         .limit(productsInOnePage)
         .populate('category')
         .exec(function (err, products) {
-            if (err) return next(err);
+            if (err) {
+                res.status(500).render('error_handle/errorpage',
+                    {
+                        error:err,message:"Internal Server Error",
+                        request:'GET /pagenotlogin/'+ req.params.page
+                    });
+                return;
+            }
             product.count().exec(function (err, count) {
-                if (err) return next(err);
+                if (err) {
+                    res.status(500).render('error_handle/errorpage',
+                        {
+                            error:err,message:"Internal Server Error",
+                            request:'GET /pagenotlogin/'+ req.params.page
+                        });
+                    return;
+                };
                 var num = Math.ceil(count / productsInOnePage);
                 res.setHeader('Cache-Control','max-age=200');
                 res.render('main/index', {
@@ -170,7 +204,14 @@ router.post('/product/:product_id', function (req, res, next) {
 
 
         cart.save(function (err) {
-            if (err) return next(err);
+            if (err) {
+                res.status(500).render('error_handle/errorpage',
+                    {
+                        error:err,message:"Internal Server Error",
+                        request:'POST /product/'+ req.req.body.product_id
+                    });
+                return;
+            };
             return res.redirect('/cart');
         });
 
@@ -185,7 +226,14 @@ router.get('/cart', function (req, res, next) {
             .findOne({owner: req.user._id})
             .populate('items.item')
             .exec(function (err, cartFound) {
-                if (err) return next(err);
+                if (err) {
+                    res.status(500).render('error_handle/errorpage',
+                        {
+                            error:err,message:"Internal Server Error",
+                            request:'GET /cart'
+                        });
+                    return;
+                };
                 res.render('cart/cart', {
                     cartFound: cartFound,
                     message: req.flash('remove')
@@ -204,7 +252,14 @@ router.post('/removeall', function (req, res, next) {
         cartFound.total = (cartFound.total - parseFloat(req.body.price)).toFixed(2);
 
         cartFound.save(function (err, found) {
-            if (err) return next(err);
+            if (err) {
+                res.status(500).render('error_handle/errorpage',
+                    {
+                        error:err,message:"Internal Server Error",
+                        request:'POST /removeall'
+                    });
+                return;
+            };
             req.flash('remove', 'Successfully removed');
             res.redirect('/cart');
         });
@@ -242,7 +297,14 @@ router.post('/removeone', function (req, res, next) {
         }
 
         cartFound.save(function (err, found) {
-            if (err) return next(err);
+            if (err) {
+                res.status(500).render('error_handle/errorpage',
+                    {
+                        error:err,message:"Internal Server Error",
+                        request:'POST /removeone'
+                    });
+                return;
+            };
             req.flash('remove', 'Successfully removed');
             res.redirect('/cart');
         });
@@ -289,7 +351,14 @@ router.get('/payment', function (req, res, next) {
                     }
 
                     user.save(function (err, user) {
-                        if (err) return next(err);
+                        if (err) {
+                            res.status(500).render('error_handle/errorpage',
+                                {
+                                    error:err,message:"Internal Server Error",
+                                    request:'GET /payment'
+                                });
+                            return;
+                        };
                         callback(err, user);
                     });
                 }
