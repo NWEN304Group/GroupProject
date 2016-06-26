@@ -8,6 +8,7 @@ var product = require('../product/product')
 
 router.get('/login', function (req, res) {
     if (req.user) return res.redirect('/');
+    res.setHeader('Cache-Control','no-cache');
     res.render('users/login', {message: req.flash('loginMessage')});
 });
 
