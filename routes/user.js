@@ -4,7 +4,7 @@ var passport = require('passport');
 var passportConf = require('../config/passport');
 var async = require('async');
 var cartDB = require('../shopping_cart/cart');
-var product = require('../product/product')
+var product = require('../product/product');
 
 router.get('/login', function (req, res) {
     if (req.user) return res.redirect('/');
