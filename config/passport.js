@@ -6,7 +6,7 @@ var User = require('../models/user');
 var async = require('async');
 var Cart = require('../shopping_cart/cart');
 
-// serialize  user id to session
+// serialize user id to session
 passport.serializeUser(function(user, done) {
   done(null, user._id);
 });

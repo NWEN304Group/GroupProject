@@ -98,7 +98,8 @@ router.get('/profile', function (req, res, next) {
 
     }
     else {
-        res.render('users/login', {message: req.flash('loginMessage')});
+        // res.render('users/login', {message: req.flash('loginMessage')});
+        res.redirect('/login');
     }
 });
 
