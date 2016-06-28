@@ -318,7 +318,7 @@ router.post('/removeone', function (req, res, next) {
 
 //=============================payment==============================
 //confirm payment
-router.get('/payment', function (req, res, next) {
+router.post('/payment', function (req, res, next) {
     async.waterfall([
         function (callback) {
             Cart.findOne({owner: req.user._id}, function (err, cart) {

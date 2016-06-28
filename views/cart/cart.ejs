@@ -77,7 +77,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-                        <button type="button" class="btn btn-primary" id="confirm-payment">Confirm Payment</button>
+                        <form method="post" action="/payment">
+                            <button type="submit" class="btn btn-primary">Confirm Payment</button>
+                        </form>
                     </div>
                 </div>
             </div>
